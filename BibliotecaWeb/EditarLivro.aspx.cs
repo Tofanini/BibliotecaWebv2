@@ -12,60 +12,63 @@ namespace BibliotecaWeb
 {
     public partial class EditarLivro1 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!IsPostBack)
+			{
 
 
 
 
-                string idLivro = Request.QueryString["idLivro"];
+				string idLivro = Request.QueryString["idLivro"];
 
-                string conexao = @"Data Source=TOFANINI-PC;Initial Catalog=Biblioteca;Integrated Security=True";
-
-                string sql = "SELECT * FROM Livro where idLivro=@idLivro";
-
-
-                var cn = new SqlConnection(conexao);
-                var cmd = new SqlCommand(sql, cn);
-
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.AddWithValue("@idLivro", idLivro);
+				using (var cn = new SqlConnection(ConfigurationManager.ConnectionStrings["Biblioteca"].ConnectionString))
+				{
 
 
-                //Abre a conexão
-                cn.Open();
 
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+					string sql = "SELECT * FROM Livro where idLivro=@idLivro";
 
 
-                {
+					var cmd = new SqlCommand(sql, cn);
 
-                    idLivroTextBox.Text = dr["idLivro"].ToString();
-                    tituloTextBox.Text = dr["Titulo"].ToString();
-                    edicaoTextBox.Text = dr["Edicao"].ToString();
-                    anoTextBox.Text = dr["Ano"].ToString();
-                    isbnTextBox.Text = dr["ISBN"].ToString();
-                    localizacaoTextBox.Text = dr["Localizacao"].ToString();
-                    assuntoTextBox.Text = dr["Assunto"].ToString();
-                    autorTextBox.Text = dr["Autor"].ToString();
-                    nomeEditoraTextBox.Text = dr["nomeEditora"].ToString();
+					cmd.CommandType = CommandType.Text;
+					cmd.Parameters.AddWithValue("@idLivro", idLivro);
 
 
-                }
-                //Fecha o leitor de dados
-                dr.Close();
+					//Abre a conexão
+					cn.Open();
+
+					SqlDataReader dr = cmd.ExecuteReader();
+
+					while (dr.Read())
 
 
-                //Fecha a conexão
-                cn.Close();
+					{
+
+						idLivroTextBox.Text = dr["idLivro"].ToString();
+						tituloTextBox.Text = dr["Titulo"].ToString();
+						edicaoTextBox.Text = dr["Edicao"].ToString();
+						anoTextBox.Text = dr["Ano"].ToString();
+						isbnTextBox.Text = dr["ISBN"].ToString();
+						localizacaoTextBox.Text = dr["Localizacao"].ToString();
+						assuntoTextBox.Text = dr["Assunto"].ToString();
+						autorTextBox.Text = dr["Autor"].ToString();
+						nomeEditoraTextBox.Text = dr["nomeEditora"].ToString();
 
 
-            }
-        }
+					}
+					//Fecha o leitor de dados
+					dr.Close();
+
+
+					//Fecha a conexão
+					cn.Close();
+
+
+				}
+			}
+		}
 
         protected void alterarButton_Click(object sender, EventArgs e)
         {

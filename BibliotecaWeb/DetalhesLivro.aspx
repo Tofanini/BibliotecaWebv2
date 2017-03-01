@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Detalhes do Livro"Theme="Theme2" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalhesLivro.aspx.cs" Inherits="BibliotecaWeb.EditarLivro" %>
+﻿<%@ Page Title="Detalhes do Livro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalhesLivro.aspx.cs" Inherits="BibliotecaWeb.EditarLivro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2><%:Page.Title %></h2>
@@ -24,7 +24,7 @@
             <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
             <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
         </asp:DetailsView>
-        <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BibliotecaConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [Livro] WHERE ([idLivro] = @idLivro)">
+        <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="Data Source=TOFANINI;Initial Catalog=Biblioteca;Integrated Security=True" SelectCommand="SELECT DISTINCT * FROM [Livro] WHERE ([idLivro] = @idLivro)">
             <SelectParameters>
                 <asp:QueryStringParameter Name="idLivro" QueryStringField="idLivro" Type="Int32" />
             </SelectParameters>

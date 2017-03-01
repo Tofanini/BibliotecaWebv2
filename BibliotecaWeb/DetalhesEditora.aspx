@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Detalhes Editora" Theme="Theme4" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalhesEditora.aspx.cs" Inherits="BibliotecaWeb.DetalhesEditora" %>
+﻿<%@ Page Title="Detalhes Editora" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalhesEditora.aspx.cs" Inherits="BibliotecaWeb.DetalhesEditora" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
@@ -25,7 +25,7 @@
             <HeaderStyle BackColor="Tan" Font-Bold="True" />
             <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
         </asp:DetailsView>
-        <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:BibliotecaConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [Editora] WHERE ([nomeEditora] = @nomeEditora)">
+        <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="Data Source=TOFANINI;Initial Catalog=Biblioteca;Integrated Security=True" SelectCommand="SELECT DISTINCT * FROM [Editora] WHERE ([nomeEditora] = @nomeEditora)">
             <SelectParameters>
                 <asp:QueryStringParameter Name="nomeEditora" QueryStringField="nomeEditora" Type="String" />
             </SelectParameters>
