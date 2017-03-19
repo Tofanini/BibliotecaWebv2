@@ -9,7 +9,7 @@
 
 
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="js/valida_cpf_cnpj.js"></script>
+	<script src="../Scripts/valida_cpf_cnpj.js"></script>
 
     <div class="form-horizontal">
         <h4>Criar uma nova conta</h4>
@@ -48,16 +48,16 @@
         </div>
 
 		<div class="form-group">
-            <asp:Label runat="server" Font-Bold="true"
-				CssClass="col-md-2 control-label">CPF</asp:Label>
+            <asp:Label runat="server" Font-Bold="true" CssClass="col-md-2 control-label">CPF</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="CPF" TextMode="Number" CssClass="form-control" onblur="javascript:valida_cpf_cnpj(this.value);alert(CPF Inválido);" />
+                <asp:TextBox runat="server" ID="CPF" TextMode="Number" CssClass="form-control" onblur="javascript:if(!valida_cpf(this.value))alert('CNPJ inválido!');"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="CPF"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo CPF é obrigatório." />
             
             </div>
         </div>
-
+            
+         
 
 
 
@@ -70,11 +70,11 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Senha</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                    CssClass="text-danger" ErrorMessage="The campo password é obrigatório." />
+                    CssClass="text-danger" ErrorMessage="The campo senha é obrigatório." />
             </div>
         </div>
         <div class="form-group">
@@ -82,9 +82,9 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="o campo confirmação de password é obrigatório." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="o campo confirmação de senha é obrigatório." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="O password e confirmação de password não conferem." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="A senha e a confirmação de senha não conferem." />
             </div>
         </div>
         <div class="form-group">

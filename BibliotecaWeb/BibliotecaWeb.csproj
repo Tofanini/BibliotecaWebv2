@@ -599,6 +599,7 @@
     <Compile Include="EditarLivro.aspx.designer.cs">
       <DependentUpon>EditarLivro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Enum\Roles.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -7,74 +7,98 @@ using BibliotecaWeb.Models;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-
-
+using Microsoft.AspNet.Identity.EntityFramework;
+using BibliotecaWeb.Enum;
 
 namespace BibliotecaWeb.Account
 {
 	public partial class Register : Page
-    {
-
-        protected void CreateUser_Click(object sender, EventArgs e)
+	{
 
 
-        {
-            try
-            {
-                using (var cn = new SqlConnection(
-                  ConfigurationManager.ConnectionStrings["Biblioteca"].ConnectionString))
-                {
-                    using (var cmd = new SqlCommand("PROC_INSERT_USUARIO", cn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
+		protected void CreateUser_Click(object sender, EventArgs e)
+
+
+		{
+			try
+			{
+				using (var cn = new SqlConnection(
+				  ConfigurationManager.ConnectionStrings["Biblioteca"].ConnectionString))
+				{
+					using (var cmd = new SqlCommand("PROC_INSERT_USUARIO", cn))
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
 						cmd.Parameters.AddWithValue("@nome", nomeTextBox.Text);
 						cmd.Parameters.AddWithValue("@datanasc", datanascimentoTextBox.Text);
 						cmd.Parameters.AddWithValue("@rg", RG.Text);
 						cmd.Parameters.AddWithValue("@cpf", CPF.Text);
 						cmd.Parameters.AddWithValue("@email", Email.Text);
-                        cmd.Parameters.AddWithValue("@senha", Password.Text);
-                        cmd.Parameters.AddWithValue("@confirmacaosenha", ConfirmPassword.Text);
+						cmd.Parameters.AddWithValue("@senha", Password.Text);
+						cmd.Parameters.AddWithValue("@confirmacaosenha", ConfirmPassword.Text);
 
-                        cn.Open();
+						cn.Open();
 
 
 
-                        cmd.ExecuteNonQuery();
+						cmd.ExecuteNonQuery();
 
-                        var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                        var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-                        var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
-                        IdentityResult result = manager.Create(user, Password.Text);
-						
-
-						// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-						string code = manager.GenerateEmailConfirmationToken(user.Id);
-						string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
-						manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
-
-						if (user.EmailConfirmed)
+						var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+						var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
+						var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
+						IdentityResult result = manager.Create(user, Password.Text);
+												
+						if (result.Succeeded)
 						{
-							var resultSignIn = signInManager.PasswordSignIn(Email.Text, Password.Text, false, shouldLockout: false);
-							SigninValidation(resultSignIn);
+							IdentityResult createRoleResult = null;
+							var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+							if (!roleManager.RoleExists(Roles.Estudante.ToString()))
+							{
+								createRoleResult = roleManager.Create(new IdentityRole(Roles.Estudante.ToString()));
+							}
+							if (createRoleResult.Succeeded)
+							{
+								var addToRoleResult = manager.AddToRole(user.Id, Roles.Estudante.ToString());
+							}
+
+
+							// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+							string code = manager.GenerateEmailConfirmationToken(user.Id);
+							string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
+							manager.SendEmail(user.Id, "Confirme sua conta", "Por favor, confirme sua conta clicando <a href=\"" + callbackUrl + "\">aqui</a>.");
+
+							if (user.EmailConfirmed)
+							{
+								var resultSignIn = signInManager.PasswordSignIn(Email.Text, Password.Text, false, shouldLockout: false);
+								SigninValidation(resultSignIn);
+							}
+							else
+							{
+								ErrorMessage.Text = "Um email foi enviado para sua conta. Por favor, veja o seu email e confirme sua conta para completar o processo de cadastro.";
+							}
 						}
+
+
+
 						else
-		{
-							ErrorMessage.Text = "An email has been sent to your account. Please view the email and confirm your account to complete the registration process.";
+						{
+							ErrorMessage.Text = "Usuário já existe!";
 						}
+
+
 
 
 						if (cn.State != ConnectionState.Closed)
-                        { cn.Close(); }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+						{ cn.Close(); }
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
 
 
-        }
+		}
 
 		private void SigninValidation(SignInStatus result)
 		{
@@ -101,5 +125,7 @@ namespace BibliotecaWeb.Account
 
 			}
 		}
+
+
 	}
 }
