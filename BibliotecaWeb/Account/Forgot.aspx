@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Senha Perdida" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.cs" Inherits="BibliotecaWeb.Account.ForgotPassword" Async="true" %>
+﻿<%@ Page Title="Esqueci a senha" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.cs" Inherits="BibliotecaWeb.Account.ForgotPassword" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <asp:Button runat="server" OnClick="Forgot" Text="Email Link" CssClass="btn btn-default" />
+                            <asp:Button runat="server" OnClick="Forgot" Text="Enviar" CssClass="btn btn-default" />
                         </div>
                     </div>
                 </div>
@@ -36,5 +36,9 @@
             </asp:PlaceHolder>
         </div>
     </div>
+	<div style="text-align:right">
+	<img src="../images/senha.png" />
+
+	</div>
 	
 </asp:Content>

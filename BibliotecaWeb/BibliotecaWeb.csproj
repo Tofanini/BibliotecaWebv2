@@ -306,6 +306,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Themes\Tema1\PesquisaLivros.css" />
+    <Content Include="App_Themes\Tema2\cadastro.css" />
     <Content Include="App_Themes\Tema\Default.css" />
     <Content Include="CadastroEditora.aspx" />
     <Content Include="CadastroLivro.aspx" />
@@ -328,8 +329,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\cadastro.png" />
+    <Content Include="images\cadastro_img2.png" />
     <Content Include="images\ciadoslivros.jpg" />
     <Content Include="images\livros.jpg" />
+    <Content Include="images\senha.png" />
     <Content Include="images\Stadtbibliothek_am_Mailaender_Platz_380888.jpg" />
     <Content Include="Locacao.aspx" />
     <Content Include="PesquisaLivros.aspx" />

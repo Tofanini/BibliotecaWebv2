@@ -3,16 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-	<div style="background-color:whitesmoke"> 
+	<div style="text-align:center"> 
 		
-	<div style="text-align:center">
-		<h2>Bom dia!Como deseja fazer a sua busca?</h2>
+	<div>
+		<h2 style="background-color:aqua">Bom dia!Como deseja fazer a sua busca?</h2>
 
 		
 		<div>
-			<asp:Label ID="autorLabel" runat="server" Text="Autor" Font-Bold="true" Font-Size="X-Large"></asp:Label>
-			<div >
-				<asp:TextBox ID="autorTextBox" runat="server"></asp:TextBox>
+			<asp:Label ID="autorLabel" runat="server" Text="Autor" Font-Bold="true" BackColor="Snow" Font-Size="X-Large"></asp:Label>
+			<div style="text-align:center">
+				<asp:TextBox ID="autorTextBox" runat="server" CssClass="form"></asp:TextBox>
 
 			</div>
 		</div>
@@ -21,9 +21,9 @@
 
 
 		<div>
-			<asp:Label ID="tituloLabel" runat="server" Text="Título" Font-Bold="true" Font-Size="X-Large"></asp:Label>
+			<asp:Label ID="tituloLabel" runat="server" Text="Título" Font-Bold="true" BackColor="Snow" Font-Size="X-Large"></asp:Label>
 			<div>
-				<asp:TextBox ID="tituloTextBox" runat="server"></asp:TextBox>
+				<asp:TextBox ID="tituloTextBox" runat="server" CssClass="form"></asp:TextBox>
 
 
 			</div>
@@ -32,9 +32,9 @@
 
 
 		<div>
-			<asp:Label ID="nomeEditoraLabel" runat="server" Text="Editora" Font-Bold="true" Font-Size="X-Large"></asp:Label>
+			<asp:Label ID="nomeEditoraLabel" runat="server" Text="Editora" BackColor="Snow" Font-Bold="true" Font-Size="X-Large"></asp:Label>
 		<div>
-				<asp:TextBox ID="editoraTextBox" runat="server" ></asp:TextBox>
+				<asp:TextBox ID="editoraTextBox" runat="server" CssClass="form"></asp:TextBox>
 
 
 			</div>
@@ -43,9 +43,9 @@
 		
 
 		<div>
-			<asp:Label ID="assuntoLabel" runat="server" Text="Assunto" Font-Bold="true" Font-Size="X-Large"></asp:Label>
+			<asp:Label ID="assuntoLabel" runat="server" Text="Assunto" BackColor="Snow" Font-Bold="true" Font-Size="X-Large"></asp:Label>
 		<div>
-				<asp:TextBox ID="assuntoTextBox" runat="server" ></asp:TextBox>
+				<asp:TextBox ID="assuntoTextBox" runat="server" CssClass="form"></asp:TextBox>
 
 
 			</div>
@@ -63,7 +63,7 @@
 		<br />
 
 
-		<div>
+		<div style="background-color:whitesmoke">
 			<asp:Label ID="mensagemLabel" runat="server" Text=""></asp:Label>
 
 		</div>
@@ -72,7 +72,7 @@
 	<br />
 	<br />
 
-	<asp:GridView ID="livrosGridView" runat="server" Font-Size="X-Large" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" Width="530px" AllowSorting="True" BorderStyle="Solid" EmptyDataText="Nenhum resultado encontrado.">
+	<asp:GridView ID="livrosGridView" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" Width="530px" AllowSorting="True" BorderStyle="Solid" EmptyDataRowStyle-BackColor="Snow" EmptyDataText="Nenhum resultado encontrado.">
 		<AlternatingRowStyle BackColor="White" />
 		<Columns>
 			<asp:BoundField DataField="idLivro" HeaderText="ID_Livro" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cadastro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BibliotecaWeb.Account.Register" %>
+﻿<%@ Page Title="Cadastro" Language="C#" Theme="Tema2" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BibliotecaWeb.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
@@ -73,6 +73,7 @@
             <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Senha</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
+				
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" ErrorMessage="The campo senha é obrigatório." />
             </div>
@@ -91,6 +92,9 @@
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Cadastrar" CssClass="btn btn-default" />
             </div>
-        </div>
-    </div>
+
+	 </div>
+
+
+		
 </asp:Content>
