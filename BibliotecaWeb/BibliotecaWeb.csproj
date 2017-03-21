@@ -305,6 +305,8 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Themes\Tema1\PesquisaLivros.css" />
+    <Content Include="App_Themes\Tema\Default.css" />
     <Content Include="CadastroEditora.aspx" />
     <Content Include="CadastroLivro.aspx" />
     <Content Include="CadastroUsuario.aspx" />
@@ -326,6 +328,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\ciadoslivros.jpg" />
+    <Content Include="images\livros.jpg" />
+    <Content Include="images\Stadtbibliothek_am_Mailaender_Platz_380888.jpg" />
     <Content Include="Locacao.aspx" />
     <Content Include="PesquisaLivros.aspx" />
     <Content Include="ReservaLivro.aspx" />
@@ -333,6 +338,7 @@
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\clock.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -652,7 +658,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

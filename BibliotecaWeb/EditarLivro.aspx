@@ -88,7 +88,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="assuntoTextBox"
                     CssClass="text-danger" ErrorMessage="The campo Assunto é obrigatório." />
             </div>
-        </div>    
+        </div>   
 
 	<div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label">Autor</asp:Label>

@@ -13,10 +13,20 @@
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	
+	
 
 </head>
 <body>
-    <form runat="server">
+	
+<form runat="server">
+	
+
+		
+
+	
+		<%--<input type="text" name="relogio" size="10" style="background-color : Black; color:white; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_relogio.relogio.blur()">--%>
+
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -131,7 +141,8 @@
         
 
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Minha Biblioteca Web</p>
+                <p class="btn btn-primary btn-lg">&copy; <%: DateTime.Now.Year %> - Minha Biblioteca Web</p>
+				 
             </footer>
 
    
