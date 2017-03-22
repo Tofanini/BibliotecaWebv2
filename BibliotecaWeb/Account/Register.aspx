@@ -75,15 +75,15 @@
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
 				
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                    CssClass="text-danger" ErrorMessage="The campo senha é obrigatório." />
+                    CssClass="text-danger" ErrorMessage="O campo senha é obrigatório." />
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirmar senha</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="o campo confirmação de senha é obrigatório." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo confirmação de senha é obrigatório." />
                 <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="A senha e a confirmação de senha não conferem." />
             </div>

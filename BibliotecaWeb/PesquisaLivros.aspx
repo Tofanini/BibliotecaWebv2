@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-	<div style="text-align:center"> 
+	<div class="box" style="text-align:center"> 
 		
 	<div>
-		<h2 style="background-color:aqua">Bom dia!Como deseja fazer a sua busca?</h2>
+		<%--<h2 style="background-color:aqua">Bom dia!Como deseja fazer a sua busca?</h2>--%>
 
 		
 		<div>

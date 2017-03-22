@@ -1,20 +1,26 @@
-﻿using System;
-using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
+﻿using BibliotecaWeb.Enum;
 using BibliotecaWeb.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using Microsoft.AspNet.Identity.EntityFramework;
-using BibliotecaWeb.Enum;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace BibliotecaWeb.Account
 {
-	public partial class Register : Page
+	public partial class RegisterFuncionario : System.Web.UI.Page
 	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
+		}
 
 		protected void CreateUser_Click(object sender, EventArgs e)
 
@@ -46,18 +52,18 @@ namespace BibliotecaWeb.Account
 						var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
 						var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
 						IdentityResult result = manager.Create(user, Password.Text);
-												
+
 						if (result.Succeeded)
 						{
 							IdentityResult createRoleResult = null;
 							var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
-							if (!roleManager.RoleExists(Roles.Estudante.ToString()))
+							if (!roleManager.RoleExists(Roles.Funcionario.ToString()))
 							{
-								createRoleResult = roleManager.Create(new IdentityRole(Roles.Estudante.ToString()));
+								createRoleResult = roleManager.Create(new IdentityRole(Roles.Funcionario.ToString()));
 							}
 							if (createRoleResult.Succeeded)
 							{
-								var addToRoleResult = manager.AddToRole(user.Id, Roles.Estudante.ToString());
+								var addToRoleResult = manager.AddToRole(user.Id, Roles.Funcionario.ToString());
 							}
 
 
@@ -81,7 +87,7 @@ namespace BibliotecaWeb.Account
 
 						else
 						{
-							ErrorMessage.Text = "Usuário já existe!";
+							ErrorMessage.Text = "Funcionário já existe!";
 						}
 
 
@@ -129,3 +135,5 @@ namespace BibliotecaWeb.Account
 
 	}
 }
+
+

@@ -61,7 +61,7 @@
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label">UF</asp:Label>
             <div class="col-md-10">
-                    <asp:DropDownList ID="ufDropDownList" runat="server">
+                    <asp:DropDownList ID="ufDropDownList" runat="server" CssClass="form-control">
                         <asp:ListItem>N/S</asp:ListItem>
                         <asp:ListItem>AC</asp:ListItem>
                         <asp:ListItem>AL</asp:ListItem>
@@ -139,6 +139,7 @@
         </div>
 
 
-    </div>
+  </div>
+		</div>
 
 </asp:Content>

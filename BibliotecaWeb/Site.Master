@@ -71,7 +71,7 @@
 
 
 
-                        <%if (Context.User.IsInRole("funcionario"))
+                        <%if (Context.User.IsInRole("Funcionario"))
                             { %>
 
                          <li class="dropdown">
@@ -89,7 +89,7 @@
                         
 
                          <%}
-    else if (Context.User.IsInRole("admin"))
+    else if (Context.User.IsInRole("Admin"))
     { %>
 
                         <li class="dropdown">
