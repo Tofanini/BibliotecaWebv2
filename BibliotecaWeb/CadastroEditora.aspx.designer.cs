@@ -31,40 +31,49 @@ namespace BibliotecaWeb {
         protected global::System.Web.UI.WebControls.TextBox nomeTextBox;
         
         /// <summary>
-        /// Controle enderecoTextBox.
+        /// Controle cep.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox enderecoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox cep;
         
         /// <summary>
-        /// Controle bairroTextBox.
+        /// Controle rua.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox bairroTextBox;
+        protected global::System.Web.UI.WebControls.TextBox rua;
         
         /// <summary>
-        /// Controle cidadeTextBox.
+        /// Controle bairro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cidadeTextBox;
+        protected global::System.Web.UI.WebControls.TextBox bairro;
         
         /// <summary>
-        /// Controle ufDropDownList.
+        /// Controle cidade.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ufDropDownList;
+        protected global::System.Web.UI.WebControls.TextBox cidade;
+        
+        /// <summary>
+        /// Controle uf.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList uf;
         
         /// <summary>
         /// Controle telefoneTextBox.
@@ -74,15 +83,6 @@ namespace BibliotecaWeb {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox telefoneTextBox;
-        
-        /// <summary>
-        /// Controle cepTextBox.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cepTextBox;
         
         /// <summary>
         /// Controle cnpjTextBox.

@@ -5,10 +5,82 @@
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
      <script src="../Scripts/valida_cpf_cnpj.js"></script>
+	 <!-- Adicionando Javascript -->
+    <script type="text/javascript" >
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+		document.getElementById('MainContent_rua').value=("");
+		document.getElementById('MainContent_bairro').value=("");
+		document.getElementById('MainContent_cidade').value=("");
+		document.getElementById('MainContent_uf').value=("");
+            //document.getElementById('ibge').value=("");
+    }
 
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+			document.getElementById('MainContent_rua').value=(conteudo.logradouro);
+			document.getElementById('MainContent_bairro').value=(conteudo.bairro);
+			document.getElementById('MainContent_cidade').value=(conteudo.localidade);
+			document.getElementById('MainContent_uf').value=(conteudo.uf);
+            //document.getElementById('ibge').value=(conteudo.ibge);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+				document.getElementById('MainContent_rua').value="...";
+				document.getElementById('MainContent_bairro').value="...";
+				document.getElementById('MainContent_cidade').value="...";
+				document.getElementById('MainContent_uf').value="...";
+                //document.getElementById('ibge').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
+	
     <div class="form-horizontal">
         <h4>Cadastro de Editora.</h4>
         <hr />
@@ -24,13 +96,20 @@
         </div>
 
 
-
+		<div class="form-group">
+            <asp:Label runat="server" CssClass="col-md-2 control-label">CEP</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="cep" CssClass="form-control" TextMode="Number" onblur="pesquisacep(this.value);"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="cep"
+                    CssClass="text-danger" ErrorMessage="O campo cep é obrigatório!" />
+            </div>
+        </div>
 
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label">Endereço</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="enderecoTextBox" CssClass="form-control" TextMode="SingleLine" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="enderecoTextBox"
+                <asp:TextBox runat="server" ID="rua" CssClass="form-control" TextMode="SingleLine" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="rua"
                     CssClass="text-danger" ErrorMessage="O campo endereço é obrigatório!" />
 
             </div>
@@ -40,8 +119,8 @@
             <asp:Label runat="server" CssClass="col-md-2 control-label">Bairro</asp:Label>
             <div class="col-md-10">
 
-                <asp:TextBox runat="server" ID="bairroTextBox" CssClass="form-control" TextMode="SingleLine" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="bairroTextBox"
+                <asp:TextBox runat="server" ID="bairro" CssClass="form-control" TextMode="SingleLine" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="bairro"
                     CssClass="text-danger" ErrorMessage="O campo bairro é obrigatório!" />
             </div>
         </div>
@@ -53,15 +132,15 @@
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label">Cidade</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="cidadeTextBox" CssClass="form-control" TextMode="SingleLine" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="cidadeTextBox"
+                <asp:TextBox runat="server" ID="cidade" CssClass="form-control" TextMode="SingleLine" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="cidade"
                     CssClass="text-danger" ErrorMessage="O campo cidade é obrigatório!" />
             </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" CssClass="col-md-2 control-label">UF</asp:Label>
             <div class="col-md-10">
-                    <asp:DropDownList ID="ufDropDownList" runat="server" CssClass="form-control">
+                    <asp:DropDownList ID="uf" runat="server" CssClass="form-control">
                         <asp:ListItem>N/S</asp:ListItem>
                         <asp:ListItem>AC</asp:ListItem>
                         <asp:ListItem>AL</asp:ListItem>
@@ -106,14 +185,7 @@
 
 
 
-        <div class="form-group">
-            <asp:Label runat="server" CssClass="col-md-2 control-label">CEP</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="cepTextBox" CssClass="form-control" TextMode="Number" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="cepTextBox"
-                    CssClass="text-danger" ErrorMessage="O campo cep é obrigatório!" />
-            </div>
-        </div>
+        
 
 
 

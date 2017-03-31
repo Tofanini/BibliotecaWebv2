@@ -14,9 +14,9 @@ namespace BibliotecaWeb
     {
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!IsPostBack)
-			{
 
+			//if (!IsPostBack)
+			
 
 
 
@@ -68,7 +68,8 @@ namespace BibliotecaWeb
 
 				}
 			}
-		}
+		
+		
 
         protected void alterarButton_Click(object sender, EventArgs e)
         {

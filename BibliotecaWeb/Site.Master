@@ -25,7 +25,7 @@
 		
 
 	
-		<%--<input type="text" name="relogio" size="10" style="background-color : Black; color:white; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_relogio.relogio.blur()">--%>
+	
 
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -66,7 +66,7 @@
                     <ul class="nav navbar-nav">
 
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="PesquisaLivros.aspx">PesquisaLivros</a></li>
+                        <li><a runat="server" href="PesquisaLivros.aspx">Pesquisar Livros</a></li>
 
 
 
@@ -75,11 +75,11 @@
                             { %>
 
                          <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastro
                              <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                               <li><a runat="server" href="~/CadastroLivro.aspx">Cad. Livro</a></li>
-                               <li><a runat="server" href="~/CadastroEditora.aspx">Cad. Editora</a></li>
+                               <li><a runat="server" href="~/CadastroLivro.aspx">Livro</a></li>
+                               <li><a runat="server" href="~/CadastroEditora.aspx">Editora</a></li>
                             </ul>
 
                         

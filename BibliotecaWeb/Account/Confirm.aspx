@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Account Confirmation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Confirm.aspx.cs" Inherits="BibliotecaWeb.Account.Confirm" Async="true" %>
+﻿<%@ Page Title="Confirmação de Conta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Confirm.aspx.cs" Inherits="BibliotecaWeb.Account.Confirm" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
@@ -11,7 +11,7 @@
         </asp:PlaceHolder>
         <asp:PlaceHolder runat="server" ID="errorPanel" ViewStateMode="Disabled" Visible="false">
             <p class="text-danger">
-                An error has occurred.
+                Um erro ocorreu.
             </p>
         </asp:PlaceHolder>
     </div>

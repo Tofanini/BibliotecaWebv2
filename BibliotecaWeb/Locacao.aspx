@@ -56,10 +56,10 @@
 
     </div><br /><br />--%>
 
-    <div class="text">
+    <div>
 
 
-        <asp:Button ID="pesquisarButton" runat="server" Text="Pesquisar" OnClick="pesquisarButton_Click" />
+        <asp:Button ID="pesquisarButton" runat="server" Text="Pesquisar" OnClick="pesquisarButton_Click" CssClass="btn btn-default" />
     </div><br />
 
     
@@ -67,19 +67,30 @@
         <asp:Label ID="mensagemLabel" runat="server" Text=""></asp:Label>
 
     </div><br /><br />
+	
 
-    <asp:GridView  ID="locacaoGridView" runat="server" Font-Size="X-Large" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" Width="530px" AllowSorting="True" BorderStyle="Solid" EmptyDataText="Nenhum resultado encontrado.">
+
+
+			
+    <asp:GridView  ID="locacaoGridView" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" Width="530px" AllowSorting="True" BorderStyle="Solid" EmptyDataText="Nenhum resultado encontrado.">
         <AlternatingRowStyle BackColor="White" />
+
+	
         <Columns>
             <asp:BoundField DataField="idLivro" HeaderText="ID_Livro" />
             <asp:BoundField DataField="Autor" HeaderText="Autor" />
             <asp:BoundField DataField="Titulo" HeaderText="Título" />
             <asp:BoundField DataField="Nome" HeaderText="Locatário" />
             <asp:BoundField DataField="RG" HeaderText="RG" />
+
+			
             <asp:HyperLinkField Text="Detalhes..." DataNavigateUrlFields="idLivro" DataNavigateUrlFormatString="DetalhesLivro.aspx?idLivro={0}" NavigateUrl="~/DetalhesLivro.aspx" />
 
+			
 
-            <asp:HyperLinkField NavigateUrl="~/EditarLivro.aspx" Text="Editar"  DataNavigateUrlFormatString="EditarLivro.aspx?idLivro={0}" DataNavigateUrlFields="idLivro" />
+
+
+           <%-- <asp:HyperLinkField NavigateUrl="~/EditarLivro.aspx" Text="Editar"  DataNavigateUrlFormatString="EditarLivro.aspx?idLivro={0}" DataNavigateUrlFields="idLivro" />--%>
                
             
 
@@ -96,6 +107,8 @@
             
 
         </Columns>
+
+
         
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -111,10 +124,10 @@
        
         
     </asp:GridView>
+	
 
 
-
-    <div>
+    <%--<div>
         <asp:Label ID="dataLabel" runat="server" Text="Data de Devolução"></asp:Label>
 
         <div>
@@ -122,13 +135,12 @@
             <asp:TextBox ID="dataTextBox" runat="server" TextMode="Date"></asp:TextBox>
         </div>
 
-    </div><br /><br />
+    </div><br /><br />--%>
 
 
-    <div class="text">
+    <div>
 
-
-        <asp:Button ID="alocarButton" runat="server" Text="Alocar" OnClick="AlocarButton_Click" />
+        <asp:Button ID="alocarButton" runat="server" Text="Alocar" OnClick="AlocarButton_Click" CssClass="btn btn-default"/>
     </div><br />
 
 </asp:Content>

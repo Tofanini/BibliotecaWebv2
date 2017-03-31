@@ -30,7 +30,7 @@ namespace BibliotecaWeb
                 using (var cn = new SqlConnection(
                   ConfigurationManager.ConnectionStrings["Biblioteca"].ConnectionString))
                 {
-                    using (var cmd = new SqlCommand("SELECT r.id, r.idLivro, l.Autor, l.Titulo, u.Nome, u.RG from Reserva as r, Livro as l, Usuario as u where r.idLocatario = u.idUsuario AND r.idLivro = l.idLivro AND RG = @rg ", cn))
+                    using (var cmd = new SqlCommand("SELECT asp.Id, r.idReserva, r.idLivro, l.Autor, l.Titulo, u.Nome, u.RG from AspNetUsers as asp, Reserva as r, Livro as l, Usuario as u where r.idLocatario = asp.Id AND r.idLivro = l.idLivro AND RG = @rg ", cn))
                     {
                         cn.Open();
 

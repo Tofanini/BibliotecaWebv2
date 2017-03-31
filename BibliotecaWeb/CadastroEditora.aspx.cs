@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace BibliotecaWeb
 {
     public partial class CadastroEditora : System.Web.UI.Page
@@ -16,10 +17,16 @@ namespace BibliotecaWeb
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
+	
+
+		}
 
 
-        public void LimparTODOSTextBox(Control controle)
+
+		
+
+
+		public void LimparTODOSTextBox(Control controle)
         {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controle.Controls)
@@ -38,7 +45,11 @@ namespace BibliotecaWeb
             }
         }
 
-        protected void cadastrarButton_Click(object sender, EventArgs e)
+
+		
+
+
+		protected void cadastrarButton_Click(object sender, EventArgs e)
         {
             mensagemLabel.Text = string.Empty;
             mensagemLabel.ForeColor = Color.Black;
@@ -51,13 +62,13 @@ namespace BibliotecaWeb
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@nomeEditora", nomeTextBox.Text);
-                        cmd.Parameters.AddWithValue("@endereco", enderecoTextBox.Text);
-                        cmd.Parameters.AddWithValue("@bairro", bairroTextBox.Text);
-                        cmd.Parameters.AddWithValue("@cidade", cidadeTextBox.Text);
+                        cmd.Parameters.AddWithValue("@endereco", rua.Text);
+                        cmd.Parameters.AddWithValue("@bairro", bairro.Text);
+                        cmd.Parameters.AddWithValue("@cidade", cidade.Text);
                         cmd.Parameters.AddWithValue("@telefone", telefoneTextBox.Text);
-                        cmd.Parameters.AddWithValue("@cep", cepTextBox.Text);
+                        cmd.Parameters.AddWithValue("@cep", cep.Text);
                         cmd.Parameters.AddWithValue("@cnpj", cnpjTextBox.Text);
-                        cmd.Parameters.AddWithValue("@uf", ufDropDownList.Text);
+                        cmd.Parameters.AddWithValue("@uf", uf.Text);
 
                         cn.Open();
                         if (nomeTextBox.Text == string.Empty)

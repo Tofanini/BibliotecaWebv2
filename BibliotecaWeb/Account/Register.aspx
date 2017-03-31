@@ -50,7 +50,7 @@
 		<div class="form-group">
             <asp:Label runat="server" Font-Bold="true" CssClass="col-md-2 control-label">CPF</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="CPF" TextMode="Number" CssClass="form-control" onblur="javascript:if(!valida_cpf(this.value))alert('CNPJ inválido!');"/>
+                <asp:TextBox runat="server" ID="CPF" TextMode="Number" CssClass="form-control" onblur="javascript:if(!valida_cpf(this.value))alert('CPF inválido!');"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="CPF"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo CPF é obrigatório." />
             

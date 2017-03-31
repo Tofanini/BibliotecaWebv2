@@ -82,33 +82,37 @@
 			<asp:BoundField DataField="Assunto" HeaderText="Assunto" />
 			<asp:HyperLinkField Text="Detalhes..." DataNavigateUrlFields="idLivro" DataNavigateUrlFormatString="DetalhesLivro.aspx?idLivro={0}" NavigateUrl="~/DetalhesLivro.aspx" />
 
+			
 
-			<asp:HyperLinkField NavigateUrl="~/EditarLivro.aspx" Text="Editar" DataNavigateUrlFormatString="EditarLivro.aspx?idLivro={0}" DataNavigateUrlFields="idLivro" />
-
-
-			<%-- <asp:TemplateField ShowHeader="False">
-            
-                <ItemTemplate>
-          <% if (Context.User.Identity.IsAuthenticated) { %>
-             <asp:LinkButton ID="Button" runat="server" Text="Reservar" OnCommand="Button_Click" CommandArgument='<%# Eval("idLivro") %>'></asp:LinkButton>
-        <% } %>
-        </ItemTemplate>
-        </asp:TemplateField>--%>
+			<%--<asp:HyperLinkField NavigateUrl="~/EditarLivro.aspx" Text="Editar" DataNavigateUrlFormatString="EditarLivro.aspx?idLivro={0}" DataNavigateUrlFields="idLivro" />--%>
 
 
+			<asp:TemplateField ShowHeader="False">
+				
+				<ItemTemplate>
+					<% if (Context.User.Identity.IsAuthenticated)
+						{ %>
+					<asp:LinkButton ID="Button_Reservar" runat="server" Text="Reservar" OnCommand="Button_Click" CommandArgument='<%# Eval("idLivro") %>'></asp:LinkButton>
+					<% } %>
+				</ItemTemplate>
+			</asp:TemplateField>
 
 
 
 
 			<asp:TemplateField ShowHeader="False">
+            
+                  
+                <ItemTemplate>
+					 <% if (Context.User.Identity.IsAuthenticated && Context.User.IsInRole("Funcionario") || Context.User.IsInRole("Admin")) { %>
+					<asp:LinkButton ID="Button" runat="server" Text="Editar" PostBackUrl='<%# string.Format("~/EditarLivro?idLivro={0}", Eval("idLivro")) %>'></asp:LinkButton>
+        <% } %>
+                </ItemTemplate>
+					
+			  </asp:TemplateField>
 
-				<ItemTemplate>
-					<% if (Context.User.Identity.IsAuthenticated)
-						{ %>
-					<asp:LinkButton ID="Button" runat="server" Text="Reservar" OnCommand="Button_Click" CommandArgument='<%# Eval("idLivro") %>'></asp:LinkButton>
-					<% } %>
-				</ItemTemplate>
-			</asp:TemplateField>
+
+			
 
 
 
