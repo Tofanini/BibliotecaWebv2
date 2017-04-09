@@ -23,7 +23,7 @@ namespace BibliotecaWeb.Account
                 ApplicationUser user = manager.FindByName(Email.Text);
                 if (user == null || !manager.IsEmailConfirmed(user.Id))
                 {
-                    FailureText.Text = "The user either does not exist or is not confirmed.";
+                    FailureText.Text = "O usuário não existe ou não foi confirmado.";
                     ErrorMessage.Visible = true;
                     return;
                 }
@@ -31,7 +31,7 @@ namespace BibliotecaWeb.Account
                 // Send email with the code and the redirect to reset password page
                 string code = manager.GeneratePasswordResetToken(user.Id);
                 string callbackUrl = IdentityHelper.GetResetPasswordRedirectUrl(code, Request);
-                manager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                manager.SendEmail(user.Id, "Resetar Senha", "Por favor, reset sua senha clicando<a href=\"" + callbackUrl + "\">aqui</a>.");
                 loginForm.Visible = false;
                 DisplayEmail.Visible = true;
             }

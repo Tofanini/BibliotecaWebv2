@@ -6,6 +6,44 @@
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
 
+	
+	<script src="../Scripts/jquery-3.1.1.min.js"></script>
+     <script src="../Scripts/jquery.maskedinput.min.js"></script>
+
+	<script type="text/javascript">
+		jQuery(function ($) {
+			$("#datanascimentoTextBox").mask("99/99/9999");
+			$("#RG").mask("99.999.999-9");
+			$("#CPF").mask("999.999.999-99");
+
+		});
+    </script>
+	
+
+	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>     
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+		
+
+
+		jQuery(function ($) {
+			$("#datanascimentoTextBox").datepicker({
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+				dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+				monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+				monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior'
+			});
+			
+			
+
+		});
+</script>
+
 
 
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
@@ -18,19 +56,19 @@
 
 
 		<div class="form-group">
-            <asp:Label runat="server"  Font-Bold="true" CssClass="col-md-2 control-label">Nome</asp:Label>
+            <asp:Label runat="server"  Font-Bold="true" CssClass="col-md-2 control-label">Nome Completo</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="nomeTextBox" TextMode="SingleLine" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="nomeTextBox"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo nome é obrigatório." />
             
             </div>
-        </div>
+        </div> 
 
 		<div class="form-group">
             <asp:Label runat="server"  Font-Bold="true" CssClass="col-md-2 control-label">Data de Nascimento</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="datanascimentoTextBox" TextMode="Date" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="datanascimentoTextBox" CssClass="form-control" ClientIDMode="Static"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="datanascimentoTextBox"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo Data de Nascimento é obrigatório." />
             
@@ -40,7 +78,7 @@
 		<div class="form-group">
             <asp:Label runat="server" Font-Bold="true" CssClass="col-md-2 control-label">RG</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="RG" TextMode="Number" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="RG" CssClass="form-control" ClientIDMode="Static" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="RG"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo RG é obrigatório." />
             
@@ -50,7 +88,7 @@
 		<div class="form-group">
             <asp:Label runat="server" Font-Bold="true" CssClass="col-md-2 control-label">CPF</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="CPF" TextMode="Number" CssClass="form-control" onblur="javascript:if(!valida_cpf(this.value))alert('CPF inválido!');"/>
+                <asp:TextBox runat="server" ID="CPF" CssClass="form-control" ClientIDMode="Static" onblur="javascript:if(!valida_cpf(this.value))alert('CPF inválido!');"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="CPF"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="O campo CPF é obrigatório." />
             
@@ -95,6 +133,6 @@
 
 	 </div>
 
-
+		</div>
 		
 </asp:Content>

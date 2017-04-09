@@ -49,7 +49,7 @@ namespace BibliotecaWeb.Account
 				{
 					if (!user.EmailConfirmed)
 					{
-						FailureText.Text = "Invalid login attempt. You must have a confirmed email account.";
+						FailureText.Text = "Tentativa de login inválida. Você deve ter uma conta de e-mail confirmada.";
 						ErrorMessage.Visible = true;
 					}
 					else
@@ -104,7 +104,7 @@ namespace BibliotecaWeb.Account
 										break;
 									case SignInStatus.Failure:
 									default:
-										FailureText.Text = "Invalid login attempt";
+										FailureText.Text = "Tentativa de login inválida";
 										ErrorMessage.Visible = true;
 										break;
 

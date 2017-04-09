@@ -69,6 +69,14 @@
                         <li><a runat="server" href="PesquisaLivros.aspx">Pesquisar Livros</a></li>
 
 
+						<%if (Context.User.Identity.IsAuthenticated) {%>
+						
+						
+						<li> <a runat= "server" href = "Emprestimo.aspx">Meus Emprestimos</a></li>
+																 <%	}%>
+
+
+
 
 
                         <%if (Context.User.IsInRole("Funcionario"))

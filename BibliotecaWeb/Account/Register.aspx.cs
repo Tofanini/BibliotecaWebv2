@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.AspNet.Identity.EntityFramework;
 using BibliotecaWeb.Enum;
+using System.Linq;
 
 namespace BibliotecaWeb.Account
 {
@@ -22,6 +23,9 @@ namespace BibliotecaWeb.Account
 		{
 			try
 			{
+
+				
+
 				using (var cn = new SqlConnection(
 				  ConfigurationManager.ConnectionStrings["Biblioteca"].ConnectionString))
 				{
@@ -41,12 +45,11 @@ namespace BibliotecaWeb.Account
 
 
 						cmd.ExecuteNonQuery();
-
 						var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 						var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
 						var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
 						IdentityResult result = manager.Create(user, Password.Text);
-												
+
 						if (result.Succeeded)
 						{
 							IdentityResult createRoleResult = null;
@@ -75,15 +78,19 @@ namespace BibliotecaWeb.Account
 							{
 								ErrorMessage.Text = "Um email foi enviado para sua conta. Por favor, veja o seu email e confirme sua conta para completar o processo de cadastro.";
 							}
+
 						}
 
 
 
 						else
-						{
-							ErrorMessage.Text = "Usuário já existe!";
-						}
 
+							{
+							ErrorMessage.Text = result.Errors.ToList().FirstOrDefault().ToString();
+							}
+
+
+						
 
 
 
@@ -94,7 +101,7 @@ namespace BibliotecaWeb.Account
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				ErrorMessage.Text = "CPF já cadastrado!";
 			}
 
 
